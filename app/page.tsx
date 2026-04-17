@@ -8,7 +8,7 @@ import Main from "@/components/Main/Main";
 import { useAppSelector } from "@/state/hooks";
 
 const Home = () => {
-	const { isIntro } = useAppSelector(state => state.app);
+	const { isIntro, isIntroOpening } = useAppSelector(state => state.app);
 
 	const [isLoading, setIsLoading] = useState(true);
 	const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -43,6 +43,29 @@ const Home = () => {
 
 		init();
 	}, []);
+
+	useEffect(() => {
+        const handleVisibilityChange = () => {
+            if (!audioRef.current) return;
+
+            if (document.hidden) {
+                audioRef.current.pause();
+            } else {
+                if (isIntroOpening) {
+					audioRef.current.playbackRate = 1.0;
+					const currentTime = audioRef.current.currentTime;
+                    audioRef.current.currentTime = currentTime;
+
+                    audioRef.current.play().catch(() => {
+                        console.log("Автоплей при возврате заблокирован");
+                    });
+                }
+            }
+        };
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+        return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+    }, [isIntroOpening]);
 
 	return (
 		<div>
