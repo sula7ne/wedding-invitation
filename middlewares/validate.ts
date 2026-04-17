@@ -1,6 +1,6 @@
 import { ZodError, ZodType } from "zod";
 
-import { ApiError } from "@/exceptions/ApiError";
+import { ApiError } from "@/exceptions/apiError";
 
 interface ISchema {
     body?: ZodType<any>;

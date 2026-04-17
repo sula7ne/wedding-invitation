@@ -1,6 +1,6 @@
 import { GuestDto, guestDto } from "@/schemas/guest.schema";
 
-import { ApiError } from "@/exceptions/ApiError";
+import { ApiError } from "@/exceptions/apiError";
 import { guestService } from "@/services/guests.service";
 import { validate } from "@/middlewares/validate";
 

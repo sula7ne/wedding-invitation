@@ -1,4 +1,4 @@
-import { ApiError } from "@/exceptions/ApiError";
+import { ApiError } from "@/exceptions/apiError";
 import { z } from "zod";
 
 const envSchema = z.object({

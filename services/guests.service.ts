@@ -1,6 +1,6 @@
 import { toClient, toDb } from "@/mappers/guest.mapper";
 
-import { ApiError } from "@/exceptions/ApiError";
+import { ApiError } from "@/exceptions/apiError";
 import { GuestDto } from "@/schemas/guest.schema";
 import { supabase } from "@/db/supabase";
 

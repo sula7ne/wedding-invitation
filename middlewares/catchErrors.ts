@@ -1,4 +1,4 @@
-import { ApiError } from "@/exceptions/ApiError";
+import { ApiError } from "@/exceptions/apiError";
 
 export function catchErrors<T extends unknown[]>(fn: (...args: T) => Promise<Response>) {
     return async (...args: T): Promise<Response> => {
