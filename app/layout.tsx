@@ -11,10 +11,12 @@ const montserrat = Montserrat({
     weight: ["300", "400", "500", "600", "700"],
     variable: "--font-montserrat",
 });
-
 export const metadata: Metadata = {
     title: "Асылжан & Камила үйлену тойына шақыру",
-    description: "Асылжан & Камила үйлену тойына шақыру",
+    description: "Сіздерді осы ерекше күнді бізбен бөлісуге шақырамыз!",
+    openGraph: {
+        images: '/cover.jpeg',
+    },
 };
 
 export const viewport: Viewport = {
