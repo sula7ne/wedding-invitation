@@ -1,0 +1,30 @@
+@use "@/assets/styles/variables" as *;
+
+.info {
+    // margin-top: 100px;
+    margin-top: clamp(12px, 6vw, 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // row-gap: 20px;
+    row-gap: clamp(6px, 5vw, 40px);
+    text-align: center; 
+    color: $text-color;
+    padding: 0 clamp(5px, 3vw, 20px);
+
+    .title {
+        // font-size: 100px;
+        font-size: clamp(25px, 8vw, 85px);
+        font-family: 'caligraphic', Arial, sans-serif;
+        font-weight: 500;
+    }
+    .description {
+        // font-size: 35px;
+        font-size: clamp(12px, 5vw, 35px);
+        font-family: var(--font-montserrat), Arial, sans-serif;
+        font-weight: 300;
+        line-height: 1.5;
+        max-width: 885px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,89 @@
+@use "@/assets/styles/variables" as *;
+
+.countdown {
+    padding: 0 clamp(5px, 3vw, 20px);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    // margin-top: 200px;
+    margin-top: clamp(80px, 30vw, 300px);
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    row-gap: clamp(6px, 5.5vw, 45px);
+
+    .title {
+        font-size: 120px;
+        font-size: clamp(25px, 12.5vw, 130px);
+        font-family: 'Caligraphic', Arial, sans-serif;
+        font-weight: 500;
+    }
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); // 4 если есть seconds
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: var(--font-montserrat), Arial, sans-serif;
+
+            span {
+                font-size: clamp(30px, 12vw, 110px);
+                font-weight: 400;
+                font-variant-numeric: tabular-nums;
+            }
+
+            p {
+                margin-top: 10px;
+                font-size: clamp(12px, 4.5vw, 35px);
+                
+                font-weight: 300;
+            }
+        }
+    }
+}
+
+// @media (max-width: 768px) {
+//     .countdown {
+//         .item {
+//             span {
+//                 font-size: 80px;
+//             }
+    
+//             p {
+//                 font-size: 25px;
+//             }
+//         }
+//     }
+// }
+
+// @media (max-width: 480px) {
+//     .countdown {
+//         .item {
+//             span {
+//                 font-size: 50px;
+//             }
+    
+//             p {
+//                 font-size: 20px;
+//             }
+//         }
+//     }
+// }
+
+// @media (max-width: 380px) {
+//     .countdown {
+//         .item {
+//             span {
+//                 font-size: 40px;
+//             }
+    
+//             p {
+//                 font-size: 16px;
+//             }
+//         }
+//     }
+// }

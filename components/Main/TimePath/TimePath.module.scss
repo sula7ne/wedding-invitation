@@ -1,0 +1,133 @@
+@use "@/assets/styles/variables" as *;
+
+.time-path {
+    position: relative;
+    padding: 0 clamp(5px, 3vw, 20px);
+    // margin-top: 250px;
+    margin-top: clamp(80px, 24.4vw, 250px);
+
+    .heart {
+        z-index: 10;
+        position: absolute;
+        width: 227px;
+        height: auto;
+        width: clamp(80px, 20vw, 227px);
+    }
+
+    .text-container {
+        padding: 0 clamp(5px, 3vw, 20px);
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        // row-gap: 560px;
+        row-gap: clamp(100px, 47.5vw, 560px);
+        // top: 600px;
+        top: clamp(100px, 65vw, 650px);
+        left: 0;
+
+        li {
+            position: relative;
+            color: $text-color;
+
+            h2 {
+                font-family: 'caligraphic', Arial, sans-serif;
+                font-weight: 200;
+            }
+            h4 {
+                font-family: var(--font-montserrat), Arial, sans-serif;
+                font-weight: 300;
+                // font-size: 110px;
+                font-size: clamp(30px, 12vw, 110px);
+                text-align: center;
+            }
+            
+            img {
+                width: 300px;
+                height: auto;
+            }
+
+            &:nth-child(2n) {
+                align-self: flex-end;
+            }
+            &:nth-child(2n+1) {
+                align-self: flex-start;
+            }
+
+            &:nth-child(1) {
+                // left: 100px;
+                left: clamp(10px, 6vw, 100px);
+
+                h2 {
+                    // font-size: 150px;
+                    font-size: clamp(25px, 12vw, 130px);
+                }
+            }
+            &:nth-child(2) {
+                // right: 100px;
+                right: clamp(10px, 6vw, 100px);
+
+                h2 {
+                    // font-size: 130px;
+                    font-size: clamp(25px, 13vw, 140px);
+                }
+            }
+            &:nth-child(3) {
+                left: clamp(10px, 18vw, 300px);
+
+                h2 {
+                    // font-size: 100px;
+                    font-size: clamp(25px, 14vw, 150px);
+                }
+            }
+            &:nth-child(4) {
+                right: clamp(10px, 6vw, 100px);
+                h2 {
+                    // font-size: 150px;
+                    font-size: clamp(25px, 11vw, 120px);
+                }
+            }
+            &:nth-child(5) {
+                // left: clamp(10px, 12vw, 200px);
+                left: clamp(10px, 18vw, 300px);
+
+                h2 {
+                    font-size: clamp(25px, 14vw, 150px);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1160px) {
+    .time-path {
+        .text-container {
+            row-gap: clamp(100px, 60vw, 560px);
+        }
+    }
+}
+
+@media (max-width: 990px) {
+    .time-path {
+        .text-container {
+            row-gap: clamp(100px, 52.5vw, 560px);
+        }
+    }
+}
+
+@media (max-width: 770px) {
+    .time-path {
+        .text-container {
+            row-gap: clamp(100px, 50vw, 560px);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .time-path {
+        .text-container {
+            row-gap: clamp(100px, 50vw, 560px);
+        }
+    }
+}

@@ -1,0 +1,14 @@
+@use "@/assets/styles/variables" as *;
+
+.main {
+    background-color: $background;
+
+    .container {
+        position: relative;
+        height: 100%;
+        margin: 0 auto;
+        max-width: 1024px;
+        width: 100%;
+        overflow: hidden;
+    }
+}
