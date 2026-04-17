@@ -53,26 +53,23 @@ const Home = () => {
                 audio.pause();
             } else {
                 if (isIntroOpening) {
-                    // 1. Сначала жестко сбрасываем скорость в дефолт
-                    audio.playbackRate = 1.0;
-                    audio.defaultPlaybackRate = 1.0;
+                    // Сохраняем текущее время
+                    const currentTime = audio.currentTime;
 
-                    // 2. Делаем микро-паузу перед воспроизведением. 
-                    // Это дает мобильному браузеру время "проснуться"
+                    // РАДИКАЛЬНЫЙ ШАГ: Перезагружаем источник
+                    // Это очищает заглючивший буфер браузера
+                    audio.load(); 
+                    
+                    // Возвращаем время назад
+                    audio.currentTime = currentTime;
+
+                    // Небольшая задержка перед игрой, чтобы load() успел отработать
                     setTimeout(() => {
-                        // 3. Трюк для iOS: если скорость скачет, 
-                        // кратковременно меняем её и возвращаем назад
-                        audio.playbackRate = 1.1; 
-                        
-                        audio.play().then(() => {
-                            // Как только заиграло — возвращаем на нормальную скорость
-                            setTimeout(() => {
-                                audio.playbackRate = 1.0;
-                            }, 50);
-                        }).catch(() => {
+                        audio.playbackRate = 1.0;
+                        audio.play().catch(() => {
                             console.log("Play blocked");
                         });
-                    }, 100); 
+                    }, 50);
                 }
             }
         };
