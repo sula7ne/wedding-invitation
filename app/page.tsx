@@ -46,19 +46,33 @@ const Home = () => {
 
 	useEffect(() => {
         const handleVisibilityChange = () => {
-            if (!audioRef.current) return;
+            const audio = audioRef.current;
+            if (!audio) return;
 
             if (document.hidden) {
-                audioRef.current.pause();
+                audio.pause();
             } else {
                 if (isIntroOpening) {
-					audioRef.current.playbackRate = 1.0;
-					const currentTime = audioRef.current.currentTime;
-                    audioRef.current.currentTime = currentTime;
+                    // 1. Сначала жестко сбрасываем скорость в дефолт
+                    audio.playbackRate = 1.0;
+                    audio.defaultPlaybackRate = 1.0;
 
-                    audioRef.current.play().catch(() => {
-                        console.log("Автоплей при возврате заблокирован");
-                    });
+                    // 2. Делаем микро-паузу перед воспроизведением. 
+                    // Это дает мобильному браузеру время "проснуться"
+                    setTimeout(() => {
+                        // 3. Трюк для iOS: если скорость скачет, 
+                        // кратковременно меняем её и возвращаем назад
+                        audio.playbackRate = 1.1; 
+                        
+                        audio.play().then(() => {
+                            // Как только заиграло — возвращаем на нормальную скорость
+                            setTimeout(() => {
+                                audio.playbackRate = 1.0;
+                            }, 50);
+                        }).catch(() => {
+                            console.log("Play blocked");
+                        });
+                    }, 100); 
                 }
             }
         };
