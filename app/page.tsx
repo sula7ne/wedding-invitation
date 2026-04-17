@@ -31,7 +31,10 @@ const Home = () => {
 		};
 
 		const init = async () => {
-			await preloadImages();
+			await Promise.all([
+                preloadImages(),
+                document.fonts.ready 
+            ]);
 
 			await new Promise((res) => setTimeout(res, 300));
 
@@ -40,8 +43,6 @@ const Home = () => {
 
 		init();
 	}, []);
-
-	
 
 	return (
 		<div>
